@@ -4,12 +4,12 @@ server:
 
 spring:
   application:
-      name: haiyu
+      name: terryhao
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/haiyu?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://localhost:3306/terryhao?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
       username: root
-      password: root
+      password: beap1234
       initial-size: 1
       min-idle: 1
       max-active: 20
