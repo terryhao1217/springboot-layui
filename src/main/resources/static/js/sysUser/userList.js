@@ -10,7 +10,7 @@ $(function() {
 
         tableIns=table.render({
             elem: '#uesrList',
-            url:'/user/getUserList',
+            url:'/user/getUserTaskList',
             method: 'post', //默认：get请求
             cellMinWidth: 80,
             page: true,
@@ -26,11 +26,11 @@ $(function() {
             },
             cols: [[
                 {type:'numbers'}
-                ,{field:'sysUserName', title:'用户名',align:'center'}
-                ,{field:'roleName', title:'角色类型',align:'center'}
-                ,{field:'userPhone', title:'手机号',align:'center'}
-                ,{field:'regTime', title: '注册时间',align:'center'}
-                ,{field:'userStatus', title: '是否有效',align:'center'}
+                ,{field:'taskNumber', title:'任务编号',align:'center'}
+                ,{field:'website', title:'扫描网址',align:'center'}
+                ,{field:'subTime', title:'创建时间',align:'center'}
+                ,{field:'startTime', title: '开始时间',align:'center'}
+                ,{field:'endTime', title: '结束时间',align:'center'}
                 ,{title:'操作',align:'center', toolbar:'#optBar'}
             ]],
             done: function(res, curr, count){

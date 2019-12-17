@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.UserTaskMapper">
+    <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.UserTask">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="task_number" jdbcType="VARCHAR" property="taskNumber" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="website" jdbcType="VARCHAR" property="website" />
+        <result column="typee" jdbcType="INTEGER" property="typee" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="sub_time" jdbcType="VARCHAR" property="subTime" />
+        <result column="start_time" jdbcType="VARCHAR" property="startTime" />
+        <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    </resultMap>
+
+    <sql id="baseColumn">
+    id,task_number,user_id,website,typee,status,sub_time,start_time,end_time
+  </sql>
+
+
+    <update id="updateUserTask">
+        UPDATE user_task
+        <set>
+            <if test="website != null">
+                website = #{website},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+
+            <if test="subTime != null">
+                sub_time = #{subTime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateUserTaskStatus">
+    UPDATE user_task
+    SET status = #{status}
+    WHERE id = #{id}
+  </update>
+
+    <update id="updateUserTaskType">
+    UPDATE user_task
+    SET typee = #{typee}
+    WHERE id = #{id}
+  </update>
+
+
+
+    <select id="getUserTaskByWebsite" resultMap="BaseResultMap">
+        SELECT <include refid="baseColumn"/>
+        FROM user_task
+        WHERE website = #{website}
+    </select>
+
+    <select id="getUserTaskList" resultType="BaseResultMap">
+        SELECT <include refid="baseColumn"/>
+        FROM user_task
+        <where>
+            <if test="website != null and website != '' ">
+                and website LIKE '%' #{website} '%'
+            </if>
+            <if test="type != null and type != '' ">
+                and typee = #{typee}
+            </if>
+            <if test="status != null and status != '' ">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
