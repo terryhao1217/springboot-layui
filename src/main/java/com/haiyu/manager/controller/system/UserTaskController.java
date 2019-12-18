@@ -60,8 +60,8 @@ public class UserTaskController {
     @ResponseBody
     public PageDataResult getUserList(@RequestParam("pageNum") Integer pageNum,
                                       @RequestParam("pageSize") Integer pageSize,/*@Valid PageRequest page,*/ UserTaskSearchDTO userTaskSearch) {
-        /*logger.info("分页查询用户列表！搜索条件：userSearch：" + userSearch + ",pageNum:" + page.getPageNum()
-                + ",每页记录数量pageSize:" + page.getPageSize());*/
+        logger.info("分页查询用户列表！搜索条件：userSearch：" + userTaskSearch+ ",pageNum:" + pageNum
+                + ",每页记录数量pageSize:" + pageSize);
         PageDataResult pdr = new PageDataResult();
         try {
             if(null == pageNum) {

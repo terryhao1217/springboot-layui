@@ -12,7 +12,7 @@ $(function() {
             elem: '#uesrList',
             url:'/user/getUserTaskList',
             method: 'post', //默认：get请求
-            cellMinWidth: 80,
+            cellMinWidth: 40,
             page: true,
             request: {
                 pageName: 'pageNum', //页码的参数名称，默认：pageNum
@@ -31,6 +31,8 @@ $(function() {
                 ,{field:'subTime', title:'创建时间',align:'center'}
                 ,{field:'startTime', title: '开始时间',align:'center'}
                 ,{field:'endTime', title: '结束时间',align:'center'}
+                ,{field:'typee', title: '类型',align:'center'}
+                ,{field:'status', title: '状态',align:'center'}
                 ,{title:'操作',align:'center', toolbar:'#optBar'}
             ]],
             done: function(res, curr, count){
@@ -39,11 +41,23 @@ $(function() {
                 //console.log(res);
                 //得到当前页码
                 console.log(curr);
-                $("[data-field='userStatus']").children().each(function(){
+                $("[data-field='status']").children().each(function(){
                     if($(this).text()=='1'){
-                        $(this).text("有效")
+                        $(this).text("执行中")
                     }else if($(this).text()=='0'){
-                        $(this).text("失效")
+                        $(this).text("准备执行")
+                    }else if($(this).text()=='2'){
+                        $(this).text("执行完毕")
+                    }
+                });
+
+                $("[data-field='typee']").children().each(function(){
+                    if($(this).text()=='1'){
+                        $(this).text("全扫描")
+                    }else if($(this).text()=='0'){
+                        $(this).text("预扫描")
+                    }else if($(this).text()=='2'){
+                        $(this).text("渗透测试")
                     }
                 });
                 //得到数据总量

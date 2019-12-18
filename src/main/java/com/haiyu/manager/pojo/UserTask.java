@@ -13,10 +13,10 @@ public class UserTask {
     private Integer id;
 
     @Column(name = "task_number")
-    private String task_number;
+    private String taskNumber;
 
     @Column(name = "user_id")
-    private int user_id;
+    private int userId;
 
     @Column(name = "website")
     private String website;
@@ -35,5 +35,6 @@ public class UserTask {
 
     @Column(name = "end_time")
     private String endTime;
+
 
 }

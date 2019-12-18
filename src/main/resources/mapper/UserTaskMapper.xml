@@ -58,19 +58,23 @@
         WHERE website = #{website}
     </select>
 
-    <select id="getUserTaskList" resultType="BaseResultMap">
+    <select id="getUserTaskList" resultMap="BaseResultMap">
         SELECT <include refid="baseColumn"/>
         FROM user_task
         <where>
             <if test="website != null and website != '' ">
                 and website LIKE '%' #{website} '%'
             </if>
-            <if test="type != null and type != '' ">
+            <if test="typee != null and typee != '' ">
                 and typee = #{typee}
             </if>
-            <if test="status != null and status != '' ">
-                and status = #{status}
+            <if test="startTime != null and startTime != '' ">
+                and sub_time &gt;  #{startTime}
+            </if>
+            <if test="endTime != null and endTime != '' ">
+                and sub_time &lt;  #{endTime}
             </if>
         </where>
     </select>
 
+</mapper>

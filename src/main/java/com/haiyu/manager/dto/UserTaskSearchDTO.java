@@ -1,10 +1,15 @@
 package com.haiyu.manager.dto;
 
+import lombok.Data;
+
+@Data
 public class UserTaskSearchDTO {
 
     private String website;
 
-    private int typee;
+    private String typee;
 
-    private int status;
+    private String startTime;
+
+    private String endTime;
 }
