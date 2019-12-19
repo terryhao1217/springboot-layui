@@ -10,8 +10,8 @@ $(function() {
 
         tableIns=table.render({
             id:'id',
-            elem: '#permissionList',
-            url:'/permission/permissionList',
+            elem: '#orderList',
+            url:'/permission/getUserOrderList',
             method: 'post', //默认：get请求
             cellMinWidth: 80,
             page: true,
@@ -29,20 +29,20 @@ $(function() {
                 {type:'numbers'/*,width:"5%"*/}
                 /*,{field:'id', title:'id'}
                 ,{field:'parentId', title:'parentId'}*/
-                ,{field:'pname', title:'父级菜单',align:'center'/*,width:"10%"*/}
-                ,{field:'name', title:'菜单名称',align:'center'/*,width:"10%"*/}
-                ,{field:'descpt', title:'描述',align:'center'/*,width:"15%"*/}
-                ,{field:'url', title:'菜单url',align:'center'/*,width:"15%"*/}
+                ,{field:'orderNumber', title:'订单编号',align:'center'/*,width:"10%"*/}
+                ,{field:'payAmount', title:'付款金额',align:'center'/*,width:"10%"*/}
+                ,{field:'taskId', title:'任务id',align:'center'/*,width:"15%"*/}
+                ,{field:'status', title:'订单状态',align:'center'/*,width:"15%"*/}
                 ,{field:'createTime', title:'创建时间',align:'center'/*,width:"10%"*/}
-                ,{field:'updateTime', title:'更新时间',align:'center'/*,width:"10%"*/}
+                ,{field:'payTime', title:'支付时间',align:'center'/*,width:"10%"*/}
                 ,{fixed:'right',title:'操作',align:'center', toolbar:'#optBar'/*,width:"25%"*/}
             ]],
             done: function(res, curr, count){
-                $("[data-field='pname']").children().each(function(){
-                    if($(this).text()==''){
-                        $(this).text("根目录");
-                    }else {
-                        $(this).text($(this).text());
+                $("[data-field='status']").children().each(function(){
+                    if($(this).text()=='0'){
+                        $(this).text("未支付");
+                    }else if($(this).text()=='1'){
+                        $(this).text("已支付");
                     }
                 });
                 pageCurr=curr;
